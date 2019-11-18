@@ -1,0 +1,36 @@
+0000000000000000000000000000000000000000 b2c1b39db2335e7181e45491b5af383b2d4f341c morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573276686 +0000	commit (initial): first commit
+b2c1b39db2335e7181e45491b5af383b2d4f341c b2c1b39db2335e7181e45491b5af383b2d4f341c morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573454834 +0000	checkout: moving from master to login
+b2c1b39db2335e7181e45491b5af383b2d4f341c 7973c0916520bb6124b50f5b60e8132c0f9a411d morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573461033 +0000	commit: main_css_done
+7973c0916520bb6124b50f5b60e8132c0f9a411d b2c1b39db2335e7181e45491b5af383b2d4f341c morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573461348 +0000	checkout: moving from login to master
+b2c1b39db2335e7181e45491b5af383b2d4f341c 7973c0916520bb6124b50f5b60e8132c0f9a411d morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573461843 +0000	merge login: Fast-forward
+7973c0916520bb6124b50f5b60e8132c0f9a411d 3061658b75e19b10408af0faa7224f8ec74211fd morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573462953 +0000	commit: 2nd
+3061658b75e19b10408af0faa7224f8ec74211fd 3061658b75e19b10408af0faa7224f8ec74211fd morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573463016 +0000	checkout: moving from master to signup
+3061658b75e19b10408af0faa7224f8ec74211fd 4fc14638174cf75835291bbf277eee8e63915296 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573472313 +0000	commit: signup_done
+4fc14638174cf75835291bbf277eee8e63915296 3061658b75e19b10408af0faa7224f8ec74211fd morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573472324 +0000	checkout: moving from signup to master
+3061658b75e19b10408af0faa7224f8ec74211fd 4fc14638174cf75835291bbf277eee8e63915296 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573472350 +0000	merge signup: Fast-forward
+4fc14638174cf75835291bbf277eee8e63915296 4fc14638174cf75835291bbf277eee8e63915296 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573472743 +0000	checkout: moving from master to admin
+4fc14638174cf75835291bbf277eee8e63915296 a26878887076496648cbee72d90912bf5e8c65ce morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573540573 +0000	commit: ログイン機能成型前
+a26878887076496648cbee72d90912bf5e8c65ce 3bc8a7f69a827741c5a4b0d85c2ca724b86b0696 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573560323 +0000	commit: seedできないけど12日ラスト！
+3bc8a7f69a827741c5a4b0d85c2ca724b86b0696 4fc14638174cf75835291bbf277eee8e63915296 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573560337 +0000	checkout: moving from admin to master
+4fc14638174cf75835291bbf277eee8e63915296 3bc8a7f69a827741c5a4b0d85c2ca724b86b0696 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573560524 +0000	checkout: moving from master to admin
+3bc8a7f69a827741c5a4b0d85c2ca724b86b0696 4fc14638174cf75835291bbf277eee8e63915296 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573560539 +0000	checkout: moving from admin to master
+4fc14638174cf75835291bbf277eee8e63915296 3bc8a7f69a827741c5a4b0d85c2ca724b86b0696 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573560595 +0000	checkout: moving from master to admin
+3bc8a7f69a827741c5a4b0d85c2ca724b86b0696 64fa0cc761535527113ddfda87d28e10c21f3c84 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573647415 +0000	commit: おおよそのページ、seed等エラー
+64fa0cc761535527113ddfda87d28e10c21f3c84 4fc14638174cf75835291bbf277eee8e63915296 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573647554 +0000	checkout: moving from admin to master
+4fc14638174cf75835291bbf277eee8e63915296 64fa0cc761535527113ddfda87d28e10c21f3c84 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573647565 +0000	checkout: moving from master to admin
+64fa0cc761535527113ddfda87d28e10c21f3c84 4fc14638174cf75835291bbf277eee8e63915296 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573647569 +0000	checkout: moving from admin to master
+4fc14638174cf75835291bbf277eee8e63915296 64fa0cc761535527113ddfda87d28e10c21f3c84 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573648269 +0000	checkout: moving from master to admin
+64fa0cc761535527113ddfda87d28e10c21f3c84 d2b8f28a50f787bba051933be68bf5409e298c30 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573701644 +0000	commit: login完成
+d2b8f28a50f787bba051933be68bf5409e298c30 4fc14638174cf75835291bbf277eee8e63915296 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573701677 +0000	checkout: moving from admin to master
+4fc14638174cf75835291bbf277eee8e63915296 d2b8f28a50f787bba051933be68bf5409e298c30 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573704830 +0000	checkout: moving from master to admin
+d2b8f28a50f787bba051933be68bf5409e298c30 4fc14638174cf75835291bbf277eee8e63915296 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573704994 +0000	checkout: moving from admin to master
+4fc14638174cf75835291bbf277eee8e63915296 d2b8f28a50f787bba051933be68bf5409e298c30 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573705007 +0000	merge admin: Fast-forward
+d2b8f28a50f787bba051933be68bf5409e298c30 c9a2cd69a889ddbfaeea7c284e5b333390081aa1 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573705993 +0000	commit: login_all_done
+c9a2cd69a889ddbfaeea7c284e5b333390081aa1 651bb173ad7f1cfab87259e45ad26ab3ee621997 morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573706075 +0000	merge origin/master: Merge made by the 'recursive' strategy.
+651bb173ad7f1cfab87259e45ad26ab3ee621997 462a1efa35ca8c800f3d99e94b4b067aebb5486a morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573724701 +0000	commit: user_edit_done
+462a1efa35ca8c800f3d99e94b4b067aebb5486a c011f310663ec29b7445cd703934c2dc6c27b58d morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573728093 +0000	commit: edit_更新できてない
+c011f310663ec29b7445cd703934c2dc6c27b58d c011f310663ec29b7445cd703934c2dc6c27b58d morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573731039 +0000	checkout: moving from master to edit
+c011f310663ec29b7445cd703934c2dc6c27b58d 9a5459d9373b5b8cfe68c704fd3407965c72b1ab morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573734203 +0000	commit: edit_done_1114
+9a5459d9373b5b8cfe68c704fd3407965c72b1ab c011f310663ec29b7445cd703934c2dc6c27b58d morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573734209 +0000	checkout: moving from edit to master
+c011f310663ec29b7445cd703934c2dc6c27b58d 9a5459d9373b5b8cfe68c704fd3407965c72b1ab morimichi1123 <morisaki.michiya@lmi.ne.jp> 1573734239 +0000	merge edit: Fast-forward
+0000000000000000000000000000000000000000 0a2900b1ffcdc07c622b5f8ebe889069caa45e8c morimichi1123 <morisaki.michiya@lmi.ne.jp> 1574052400 +0000	commit (initial): ?やばい
