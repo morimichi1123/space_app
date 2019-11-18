@@ -12,20 +12,20 @@ class SpacesController < ApplicationController
 
   def update
     @space = Space.find(params[:id])
-      begin
-         @space.update_attribute(:space_name, params[:space][:space_name])
-         @space.update_attribute(:ward_id, params[:space][:ward_id])
-         @space.update_attribute(:price, params[:space][:price])
-         flash[:success] = "Space Information Updated"
-         redirect_to list_path
-      rescue
-    #if @space.update_attributes(space_params)
-    #  flash[:success] = "Your Information Updated"
-    #  redirect_to list_path
-    #else
-
+    #  Space.transaction do #要改善↓
+    #     @space.update_attribute(:space_name, params[:space][:space_name])
+    #     @space.update_attribute(:ward_id, params[:space][:ward_id])
+    #     @space.update_attribute(:price, params[:space][:price])
+    #  end
+    #    flash[:success] = "Space Information Updated"
+    #    redirect_to list_path
+    #  rescue
+    if @space.update_attributes(space_params)
+      flash[:success] = "Space Information Updated"
+      redirect_to list_path
+    else
          render 'edit'
-      end
+    end
   end
 
   def create
