@@ -12,6 +12,13 @@ class SpacesController < ApplicationController
   end
 
   def update
+    @space = Space.find(params[:id])
+    if @space.update_attributes(space_params)
+      flash[:success] = "Space Information Updated"
+      redirect_to list_path
+    else
+      render 'edit'
+    end
   end
 
   def create
