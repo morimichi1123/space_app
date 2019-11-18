@@ -3,9 +3,9 @@
           <% if current_user.admin? %>
             <h1>Contents</h1><br>
             <h2>
-              <li><%= link_to "ユーザ一覧", list_path %></li><br><br>
-              <li><%= link_to "物件一覧", list_path %></li><br><br>
-              <li><%= link_to "予約一覧Add New Book", new_path %></li>
+              <li><%= link_to "ユーザ一覧", userlist_path %></li><br><br>
+              <li><%= link_to "物件操作", list_path %></li><br><br>
+              <li><%= link_to "予約一覧", new_path %></li>
               </h2>
           <% else %>
             <h1>Contents</h1><br>

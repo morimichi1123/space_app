@@ -11,17 +11,18 @@
           <%= submit_tag 'Search', :title => nil %>
         <% end %>
 
-        <%= will_paginate %>
+        <% @space = Space.new unless @space %></li>
+        <%= will_paginate @space %>
         <table border="1" style="border-collapse: collapse">
         <tr>
             <th>id</th>
-            <th>title</th>
+            <th>space_name</th>
         </tr>
         <% @spaces.each do |space|%>
             <%= render space %>
         <% end %>
         </table>
-        <%= will_paginate %>
+        <%= will_paginate @space%>
         </div>
     </body>
   </aside>

@@ -42,6 +42,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def list
+    @user = User.paginate(page: params[:page]).search(params[:search])
+  end
+
   private
     def user_params
       params.require(:user).permit(:name, :email, :password,

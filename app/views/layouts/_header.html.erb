@@ -14,6 +14,7 @@
             <li><%= link_to "Log out", logout_path, method: :delete %></li>
           <% end %>
         <% else %>
+            <% @user = User.new unless @user %>
             <li><%= form_for(@user, url: login_path) do |f| %></li>
 
             <li><%= f.label :email %></li>

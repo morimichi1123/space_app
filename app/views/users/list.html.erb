@@ -1,27 +1,25 @@
-<% provide(:title,"Space List") %>
+<% provide(:title,"User List") %>
 <div class="row">
   <aside class="col-md-4">
     <body>
         <div class="container">
 
-        <h3>Space Search</h3>
+        <h3>User Search</h3>
         <%= form_tag(list_path, :method => 'get' ) do %>
           <%= text_field_tag :search %>
           <%= submit_tag 'Search', :title => nil %>
         <% end %>
 
-        <% @space = Space.new unless @space %>
-        <%= will_paginate @space %>
+        <% @user = User.new unless @user %>
+        <%= will_paginate @user %>
         <table border="1" style="border-collapse: collapse">
         <tr>
             <th>id</th>
             <th>name</th>
         </tr>
-        <% @space.each do |space|%>
-            <%= render space %>
-        <% end %>
+            <%= render @user %>
         </table>
-        <%= will_paginate @space %>
+        <%= will_paginate @user %>
         </div>
     </body>
   </aside>
