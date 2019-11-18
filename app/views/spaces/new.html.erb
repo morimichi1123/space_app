@@ -1,29 +1,24 @@
-<% provide(:title,"Space List") %>
+<% provide(:title, 'Add New Space') %>
+<h1>New Space</h1>
+<h2>
+  入力漏れ厳禁！
+</h2>
+
 <div class="row">
-  <aside class="col-md-4">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@space) do |f| %>
+      <%= render 'shared/error_space_messages' %>
 
-    <body>
-        <div class="container">
+      <%= f.label :space_name %>
+      <%= f.text_field :space_name, class: 'form-control' %>
 
-        <h3>Space Search</h3>
-        <%= form_tag(list_path, :method => 'get' ) do %>
-          <%= text_field_tag :search %>
-          <%= submit_tag 'Search', :title => nil %>
-        <% end %>
+      <%= f.label :ward_id %>
+      <%= f.text_field :ward_id, class: 'form-control' %>
 
-        <% @space = Space.new unless @space %></li>
-        <%= will_paginate @space %>
-        <table border="1" style="border-collapse: collapse">
-        <tr>
-            <th>id</th>
-            <th>space_name</th>
-        </tr>
-        <% @spaces.each do |space|%>
-            <%= render space %>
-        <% end %>
-        </table>
-        <%= will_paginate @space%>
-        </div>
-    </body>
-  </aside>
+      <%= f.label :price %>
+      <%= f.text_field :price, class: 'form-control' %>
+
+      <%= f.submit "Create New Space", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>

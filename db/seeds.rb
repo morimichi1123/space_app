@@ -17,7 +17,7 @@
 #end
 
 Space.create!(
-              space_name: "ginza",
+              space_name: "akasaka",
               ward_id: rand(1..23),
               price:  rand(5000..10000)
              )

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/list',     to: 'spaces#list'
   get '/show',     to: 'spaces#show'
   get '/new',      to: 'spaces#new'
+  get '/menu',      to: 'spaces#menu'
 
   resources :users
   resources :spaces
