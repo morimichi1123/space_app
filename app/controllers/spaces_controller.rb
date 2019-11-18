@@ -1,7 +1,6 @@
 class SpacesController < ApplicationController
-  before_action :logged_in_user, only: %i[ edit update]
-  before_action :admin_user, only: %i[ destroy create]
-  before_action :correct_user, only: %i[ edit update]
+  before_action :logged_in_user, only: %i[ show list]
+  before_action :admin_user, only: %i[ destroy create edit update]
 
   def new
     @space = Space.new
@@ -13,12 +12,20 @@ class SpacesController < ApplicationController
 
   def update
     @space = Space.find(params[:id])
-    if @space.update_attributes(space_params)
-      flash[:success] = "Space Information Updated"
-      redirect_to list_path
-    else
-      render 'edit'
-    end
+      begin
+         @space.update_attribute(:space_name, params[:space][:space_name])
+         @space.update_attribute(:ward_id, params[:space][:ward_id])
+         @space.update_attribute(:price, params[:space][:price])
+         flash[:success] = "Space Information Updated"
+         redirect_to list_path
+      rescue
+    #if @space.update_attributes(space_params)
+    #  flash[:success] = "Your Information Updated"
+    #  redirect_to list_path
+    #else
+
+         render 'edit'
+      end
   end
 
   def create
@@ -29,10 +36,6 @@ class SpacesController < ApplicationController
       else
         render 'new'
     end
-  end
-
-  def space_params
-    params.require(:space).permit(:space_name, :ward_id, :price)
   end
 
   def show
@@ -49,18 +52,12 @@ class SpacesController < ApplicationController
     redirect_to list_path
   end
 
-  def update
-    @space = Space.find(params[:id])
-    if @space.update_attributes(space_params)
-      flash[:success] = "Space Information Updated"
-      redirect_to @space
-    else
-      render 'edit'
-    end
-  end
+  private
+    #def space_params
+    #  params.require(:space).permit(:space_name, :ward_id, :price)
+    #end
 
-# private
-# def space_params
-#   params.require(:space).permit(:space_name, :ward_id, :price)
-# end
+    def space_params
+      params.require(:space).permit(:space_name, :ward_id, :price)
+    end
 end
