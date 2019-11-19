@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   get '/menu',     to: 'spaces#menu'
   get '/spaceedit', to: 'spaces#edit'
 
+  get '/rsvlist',     to: 'reservations#list'
+  get '/rsvshow',     to: 'reservations#show'
+
   resources :users
   resources :spaces
+  resources :spaces do
+    resources :reservations
+  end
 end

@@ -1,0 +1,15 @@
+
+<% @reservation = Reservation.new unless @reservation %></li>
+<% if @reservation.errors.any? %>
+ここは読み込めてる？
+<div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@reservation.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @reservation.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
