@@ -13,12 +13,20 @@
         <% @reservation = Reservation.new unless @reservation %>
         <%= will_paginate @reservation %>
         <table border="1" style="border-collapse: collapse">
-        <tr>
-            <th>id</th>
-            <th>user_id</th>
-            <th>space_name</th>
-        </tr>
-            <%= render @reservation %>
+        <% if current_user.admin? %>
+          <tr>
+              <th>id</th>
+              <th>user_id</th>
+              <th>space_name</th>
+          </tr>
+              <%= render @reservation %>
+        <% else %>
+          <tr>
+              <th>user_id</th>
+              <th>space_name</th>
+              </tr>
+               <%= render @reservation %>
+        <% end %>
         </table>
         <%= will_paginate @reservation %>
         </div>

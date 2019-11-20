@@ -14,9 +14,11 @@
                         <td><%= @space.ward_id %> </td>
                         <td><%= @space.price %> </td>
                         <td>
+                        <% if current_user.admin? %>
                         | <%= link_to  "edit" , edit_space_path(@space.id)  %>
-                        | <%= link_to "delete", @book, method: :delete,  data: { confirm: "You sure?" } %>
+                        | <%= link_to "delete", @space, method: :delete,  data: { confirm: "You sure?" } %>
                         </td>
+                        <% end%>
                     </tr>
                 </table>
             </div>
