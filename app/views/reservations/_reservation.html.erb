@@ -1,12 +1,12 @@
 <% if current_user.admin? %>
     <tr>
-        <td><%= link_to reservation.id , rsvshow_path %> </td>
+        <td><%= link_to reservation.id , reservation_path(reservation) %> </td>
         <td><%= reservation.user.id %> </td>
         <td><%= reservation.space.space_name %> </td>
     </tr>
 <% else %>
     <tr>
-        <td><%= link_to reservation.user.id, rsvshow_path %> </td>
+        <td><%= link_to reservation.user, reservation_path(reservation) %> </td>
         <td><%= reservation.space.space_name %> </td>
     </tr>
 <% end %>

@@ -6,17 +6,17 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    @reservation = Reservation.find(reservation_params[:id])
+    @reservation = Reservation.find(params[:id])
   end
 
   def list
-    @reservation = Reservation.paginate(page: params[:page]).search(params[:search])
+    @reservation = current_user.reservations.paginate(page: params[:page]).search(params[:search])
   end
 
   def create
-    @reservation = current_user.reservations.create(reservation_params)
+    #@reservation = current_user.reservations.create(reservation_params)
     #debugger
-    #@reservation = Reservation.new(reservation_params)
+    @reservation = Reservation.new(reservation_params user_id: @current_user.id)
     if @reservation.save
         flash[:success] = "予約が完了しました"
         redirect_to list_path
@@ -30,9 +30,9 @@ class ReservationsController < ApplicationController
   end
 
   private
-  def reservation_params
-    params.require(:reservation).permit(:user_id, :space_id, :start_date, :end_date)
-  end
+    def reservation_params
+      params.require(:reservation).permit(:user_id, :space_id, :start_date, :end_date)
+    end
 
  #def space_params
  #  params.require(:space).permit(:space_name, :ward_id, :price)

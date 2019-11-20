@@ -5,6 +5,9 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :space
 
+  def user
+    return User.find_by(id: self.user_id)
+  end
 
   def self.search(search) #ここでのself.はReservations. を意味する
     if search
