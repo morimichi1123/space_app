@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
   end
 
   def list
-    @reservation = current_user.reservations.paginate(page: params[:page]).search(params[:search])
+      @reservation = current_user.reservations.paginate(page: params[:page]).search(params[:search])
   end
 
   def create
@@ -24,9 +24,15 @@ class ReservationsController < ApplicationController
         #同じshowページのままエラーはく↓要改善
         #@space = Space.new(space_params)
         #redirect_to show_path
-        flash[:danger] = "日付を入力してください"
-        render 'spaces/show'
+        flash[:danger] = "予約未完了です。start/end日付を入力してください。"
+        redirect_to list_path
       end
+  end
+
+  def destroy
+    Reservation.find(params[:id]).destroy
+    flash[:success] = "Reservation canceled"
+    redirect_to list_path
   end
 
   private

@@ -5,12 +5,12 @@
             <h2>
               <li><%= link_to "ユーザ一覧", userlist_path %></li><br><br>
               <li><%= link_to "物件操作", menu_path %></li><br><br>
-              <li><%= link_to "予約一覧", rsvlist_path %></li>
+              <li><%= link_to "予約一覧", index_path %></li>
               </h2>
           <% else %>
             <h1>Contents</h1><br>
             <h2>
-              <li><%= link_to "予約一覧", rsvlist_path %></li><br><br>
+              <li><%= link_to "予約一覧", index_path %></li><br><br>
               <li><%= link_to "ユーザー情報変更", edit_user_path(current_user) %></li>
             </h2>
           <% end %>

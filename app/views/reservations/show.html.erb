@@ -1,1 +1,22 @@
-<%= @reservation.id %>
+<div class="row">
+  <table border="1" style="border-collapse: collapse">
+  <h2> Reserve Detail </h2>
+
+    <th>Reserve_id</th>
+    <th>Space_name</th>
+    <th>Price</th>
+    <th>Start_date</th>
+    <th>End_date</th>
+
+  <tr>
+    <td><%= @reservation.id %> </td>
+    <td><%= @reservation.space.space_name %> </td>
+    <td><%= @reservation.space.price %> </td>
+    <td><%= @reservation.start_date %> </td>
+    <td><%= @reservation.end_date %> </td>
+  <td>
+   <%= link_to "delete", @user, method: :delete,  data: { confirm: "You sure?" } %>
+  </td>
+</tr>
+  </table>
+</div>

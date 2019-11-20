@@ -23,6 +23,7 @@
                 </table>
             </div>
 
+            <br>
             <%= form_for @reservation do |f| %>
                 <%= f.hidden_field :space_id, value: @space.id %>
                 <%= render 'shared/error_rsv_messages' %>
