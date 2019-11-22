@@ -20,7 +20,7 @@ gem 'webdrivers'
 gem 'gimei'
 gem 'whenever', require: false
 gem 'carrierwave',             '1.2.2'
-gem 'mini_magick',             '4.7.0'
+gem 'mini_magick',             '4.9.4'
 
 group :development, :test do
   gem 'mysql2', '>= 0.3.18', '< 0.6.0'
