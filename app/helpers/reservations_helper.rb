@@ -5,7 +5,7 @@ module ReservationsHelper
          #@spaceから特定のspaceに関する予約情報を見る
          @old_reservation = Reservation.find(params[:reservation][:space_id])
 
-        if  @old_reservation.present? #rsvの中のid
+        if  @old_reservation.present?
         #予約がある場合はstart_dateとend_dateを呼び出す
             old_start_date = @old_reservation.start_date
             #あるスペースに関する予約の中のstart_date

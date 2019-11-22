@@ -13,12 +13,10 @@ namespace :total_amount do
             #reservationsテーブルのpriceカラムの合計値を求めたい場合
             array = [] #空の配列を用意
             Reservation.all.each do |reservation|
-            array << reservation.price
+            array << reservations.spaces.price
             #reservationテーブルのレコードを１件ずつ取り出し、priceカラムのデータを配列に入れる
+            puts array.sum
           end
-          array.sum
-          puts Reservation.all.sum(:price)
-          puts "Hello World"
 
         rescue => e
           #何かしらエラーが起きたら、エラーログの書き込み ただし次のユーザーの処理へは進む
@@ -31,9 +29,40 @@ namespace :total_amount do
     end
 end
 
+
+namespace :sum_sample do
+  desc "説明"
+  task :reservation_model => :environment do
+   # puts Reservation.all.sum(params([:space][:price]))
+    puts Reservation.first().space_id
+    hoge = Reservation.first().space_id
+    puts hoge
+    #puts Space.find_each do |n|
+    #  n.to_str
+    sum = 0
+    Space.joins(:reservations).select("reservations.*, spaces.*").each do |reservation|
+      sum += reservation.price.to_i
+      #puts reservation.price
+
+    #array << reservation.price
+  end
+    #puts array.sum
+    puts sum
+  end
+end
+
 namespace :task_sample do
     desc "実行処理の説明"
     task :sample do
       puts "Hello World"
     end
+end
+
+namespace :task_space_model do
+  #desc "task_sample_use_model"
+  desc "space_app_development"
+  #task :task_model => :environment do
+  task :space_model => :environment do
+    puts Space.first().to_yaml  #Spaceモデルを参照する！
+  end
 end

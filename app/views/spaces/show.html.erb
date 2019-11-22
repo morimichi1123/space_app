@@ -50,7 +50,11 @@
                         </div>
                     </div>
                 </div>
-                 <%= f.submit "この日程で予約する", class: "btn btn-danger btn-wide" %>
+                    <% if @space.exist == 0 %>
+                        <%= f.submit "この日程で予約する", class: "btn btn-danger btn-wide" %>
+                    <% else %>
+                        <h3>この物件は削除されました</h3>
+                    <% end %>
                 <% end %>
         </body>
     </aside>

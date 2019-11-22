@@ -37,6 +37,7 @@ class ReservationsController < ApplicationController
   def destroy
     Reservation.find(params[id]).destroy
     flash[:success] = "Reservation canceled"
+
     redirect_to list_path
   end
 

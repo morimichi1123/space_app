@@ -44,7 +44,7 @@ class SpacesController < ApplicationController
   end
 
   def list
-    @space = Space.paginate(page: params[:page]).search(params[:search])
+    @space = Space.paginate(page: params[:page]).search(params[:search]).where(exist: 0)
   end
 
   def destroy
