@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :logged_in_user
+  include ReservationsHelper
 
   def new
     @reservation = Reservation.new
@@ -15,22 +16,28 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = current_user.reservations.create(reservation_params)
-    #debugger
     #@reservation = Reservation.new(reservation_params user_id: @current_user.id)
-    if @reservation.save
-        flash[:success] = "予約が完了しました"
-        redirect_to list_path
+    @space =Space.find(params[:reservation][:space_id])
+    #debugger
+    if correct_reserve_period?
+      if @reservation.save
+          flash[:success] = "予約が完了しました"
+          redirect_to list_path
       else
-        #同じshowページのままエラーはく↓要改善
-        #@space = Space.new(space_params)
-        #redirect_to show_path
-        flash[:danger] = "予約未完了です。start/end日付を入力してください。"
-        redirect_to list_path
+          #同じshowページのままエラーはく↓要改善
+          #@space = Space.new(space_params)
+          #redirect_to show_path
+          flash[:danger] = "予約未完了です。start/end日付を入力してください。"
+          redirect_to list_path
       end
+    else
+      flash[:danger] = "予約未完了です。kaburu"
+      redirect_to list_path
+    end
   end
 
   def destroy
-    Reservation.find(params[:id]).destroy
+    Reservation.find(params[id]).destroy
     flash[:success] = "Reservation canceled"
     redirect_to list_path
   end

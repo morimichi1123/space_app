@@ -1,8 +1,13 @@
 module ReservationsHelper
 
-    def correct_reserve_period
+
+    def available_space_for_reservation(@space, @reservation)
+        #今以降の予約があるかどうかをチェックするモジュール
+    end
+
+    def correct_reserve_period?　#予約がある場合に重複をチェックするモジュール
          #@spaceから特定のspaceに関する予約情報を見る
-        if  @space.id.present?
+        if  @space.id.present? #rsvの中のid
         #予約がある場合はstart_dateとend_dateを呼び出す
             old_start_date = @space.start_date
             old_end_date = @space.end_date
@@ -10,10 +15,10 @@ module ReservationsHelper
             start_date = @reservation.start_date
             end_date = @reservation.end_date
         #p =( <= AND =>)期間の判別
-            #p = old_start_date <= end_date AND old_end_date >= start_date
+            p = old_start_date <= end_date && old_end_date >= start_date
             return p
         else
-
+            return false
         end
     end
 end
