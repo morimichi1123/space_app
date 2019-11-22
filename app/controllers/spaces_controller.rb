@@ -44,7 +44,7 @@ class SpacesController < ApplicationController
   end
 
   def list
-    @space = Space.paginate(page: params[:page]).search(params[:search]).where(exist: 0)
+    @space = Space.paginate(page: params[:page], per_page: 6).search(params[:search]).where(exist: 0)
   end
 
   def destroy
@@ -55,6 +55,6 @@ class SpacesController < ApplicationController
 
   private
     def space_params
-      params.require(:space).permit(:space_name, :ward_id, :price)
+      params.require(:space).permit(:space_name, :ward_id, :price, :content, :picture)
     end
 end
