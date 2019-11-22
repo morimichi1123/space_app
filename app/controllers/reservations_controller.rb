@@ -17,21 +17,19 @@ class ReservationsController < ApplicationController
   def create
     @reservation = current_user.reservations.create(reservation_params)
     #@reservation = Reservation.new(reservation_params user_id: @current_user.id)
-    @space =Space.find(params[:reservation][:space_id])
+    @space = Space.find(params[:reservation][:space_id])
     #debugger
-    if correct_reserve_period?
+    if !correct_reserve_period?
       if @reservation.save
           flash[:success] = "予約が完了しました"
           redirect_to list_path
       else
           #同じshowページのままエラーはく↓要改善
-          #@space = Space.new(space_params)
-          #redirect_to show_path
           flash[:danger] = "予約未完了です。start/end日付を入力してください。"
           redirect_to list_path
       end
     else
-      flash[:danger] = "予約未完了です。kaburu"
+      flash[:danger] = "予約未完了です。日付が重複しています。"
       redirect_to list_path
     end
   end
