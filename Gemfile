@@ -18,6 +18,9 @@ gem 'activerecord-import'
 gem 'capybara'
 gem 'webdrivers'
 gem 'gimei'
+gem 'whenever', require: false
+gem 'carrierwave',             '1.2.2'
+gem 'mini_magick',             '4.7.0'
 
 group :development, :test do
   gem 'mysql2', '>= 0.3.18', '< 0.6.0'
