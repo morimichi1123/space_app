@@ -1,6 +1,9 @@
 class Reservation < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
+#validates　にreserve_id,space_idが空白でないこと
+# 日付が逆でないことのvalid
+
 
   belongs_to :user
   belongs_to :space
@@ -8,6 +11,8 @@ class Reservation < ApplicationRecord
   def user
     return User.find_by(id: self.user_id)
   end
+  #これいる？
+
 
   def self.search(search) #ここでのself.はReservations. を意味する
     if search
