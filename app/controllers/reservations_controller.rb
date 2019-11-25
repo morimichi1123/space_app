@@ -19,23 +19,23 @@ class ReservationsController < ApplicationController
     #@reservation = Reservation.new(reservation_params user_id: @current_user.id)
     @space = Space.find(params[:reservation][:space_id])
     #debugger
-    if !correct_reserve_period?
+    if correct_reserve_period?(@reservation)
       if @reservation.save
           flash[:success] = "予約が完了しました"
           redirect_to list_path
       else
           #同じshowページのままエラーはく↓要改善
-          flash[:danger] = "予約未完了です。start/end日付を入力してください。"
+          flash[:danger] = "予約未完了です。正しいstart/end日付を入力してください。"
           redirect_to list_path
       end
     else
-      flash[:danger] = "予約未完了です。日付が重複しています。"
+      flash[:danger] = "予約未完了です。日付にエラーがあります。"
       redirect_to list_path
     end
   end
 
   def destroy
-    Reservation.find(params[id]).destroy
+    Reservation.find(params[:id]).destroy
     flash[:success] = "Reservation canceled"
 
     redirect_to list_path
