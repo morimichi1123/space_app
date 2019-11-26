@@ -1,9 +1,12 @@
 class SpacesController < ApplicationController
   before_action :logged_in_user, only: %i[ show list]
-  before_action :admin_user, only: %i[ destroy create edit update]
+  before_action :admin_user, only: %i[ destroy create edit update menu new]
 
   def new
     @space = Space.new
+  end
+
+  def menu
   end
 
   def edit
@@ -48,7 +51,11 @@ class SpacesController < ApplicationController
   end
 
   def destroy
-    Space.find(params[:id]).destroy
+    #Space.find(params[:id]).update
+    #debugger
+    space = Space.find(params[:id])
+    space.exist = 1
+    space.save
     flash[:success] = "Space deleted"
     redirect_to list_path
   end

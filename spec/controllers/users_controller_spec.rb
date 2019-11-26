@@ -1,20 +1,34 @@
 require 'rails_helper'
 
-RSpec.describe UsersController, type: :controller do
+RSpec.describe UsersController, type: :request do
+
+  before do
+    @user = User.create!(
+                 id: 2,
+                 name:  "hoge",
+                 email: "hoge@hoge.com",
+                 password: "hogehoge",
+                 password_confirmation: "hogehoge"
+                 )
+  end
+
 
   describe "GET #new" do
     it "returns http success" do
-      get :new
+      get signup_path
       expect(response).to have_http_status(:success)
+      expect(response).to render_template "users/new"
     end
   end
 
-  describe "GET #show" do
     it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
+      log_in_as(@user)
+      get user_path(@user)
+      expect(response).to have_http_status :success
+      expect(response).to render_template "users/show"
     end
-  end
+
+
 
   describe "GET #create" do
     it "returns http success" do

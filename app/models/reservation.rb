@@ -2,7 +2,7 @@ class Reservation < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validate :date_cannot_be_in_the_past
-  #validate :start_date_cannot_be_smaller_end_date
+ #validate :start_date_cannot_be_smaller_end_date
 
 def date_cannot_be_in_the_past
   if start_date.present? && start_date < Date.today
@@ -11,7 +11,9 @@ def date_cannot_be_in_the_past
 end
 
 #def start_date_cannot_be_smaller_end_date
-#  if start_date > end_date
+#  if start_date.present?
+#    start_date >= end_date
+#    errors.add(:date, ": 過去の日付は使用できません")
 #  end
 #end
 
