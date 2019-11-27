@@ -1,6 +1,7 @@
 class Space < ApplicationRecord
     has_many :reservations
 
+    validates :space_id, presence: true, length:{maximum:50}
     validates :space_name, presence: true, length:{maximum:50}
     validates :ward_id, presence: true, length:{maximum:2}
     validates :price, presence: true, length:{maximum:50}

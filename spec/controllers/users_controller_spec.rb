@@ -8,33 +8,41 @@ RSpec.describe UsersController, type: :request do
                  name:  "hoge",
                  email: "hoge@hoge.com",
                  password: "hogehoge",
-                 password_confirmation: "hogehoge"
+                 password_confirmation: "hogehoge",
+                 admin: false
                  )
+    current_user = @user
   end
 
 
-  describe "GET #new" do
-    it "returns http success" do
+    it "newアクション：user/newへのクエストが正しく返ってくること" do
       get signup_path
+      # debugger
       expect(response).to have_http_status(:success)
       expect(response).to render_template "users/new"
     end
-  end
 
-    it "returns http success" do
-      log_in_as(@user)
+
+  #feature 'home page' do
+  #  before do
+  #    visit root_path
+  #  end
+
+    it "showアクション：user/showへのリクエストが正しく返ってくること" do
       get user_path(@user)
       expect(response).to have_http_status :success
       expect(response).to render_template "users/show"
     end
+ # end
 
-
-
-  describe "GET #create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
+    #？
+    context 'static_pages#home' do
+    before { get root_path }
+      it 'responds successfully' do
+        expect(response).to have_http_status 200
+      end
     end
-  end
+
+
 
 end

@@ -1,8 +1,18 @@
 class Reservation < ApplicationRecord
-  validates :start_date, presence: true
-  validates :end_date, presence: true
+  validates :start_date, presence: true, date: true
+  validates :end_date, presence: true, date: true
   validate :date_cannot_be_in_the_past
  #validate :start_date_cannot_be_smaller_end_date
+  validate :start_end_check
+
+ def start_end_check
+   if self.start_date.present? && self.end_date.present?
+    errors.add(:end_date, "の日付を正しく記入してください。") unless
+    self.start_date < self.end_date
+   else
+    return false
+   end
+ end
 
 def date_cannot_be_in_the_past
   if start_date.present? && start_date < Date.today
