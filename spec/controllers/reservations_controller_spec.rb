@@ -8,15 +8,44 @@ RSpec.describe ReservationsController, type: :controller do
                  password: "hogehoge",
                  password_confirmation: "hogehoge",
                 )
+    @space = Space.new(
+                       ward_id: 2,
+                       price: 5000
+                      )
+  end
+
+  it "newアクション：reservation/newへのリクエストが正しく返ってくること" do
+
+    get :new
+    expect(response).to be_success
+  end
+
+  it "showアクション：reserve/newへのリクエストが正しく返ってくること	" do
+  end
+
+  it "createアクション：Successが表示されること" do
+  end
+
+  it "destroyアクション：cancelが表示されること" do
+  end
+
+  it "updateリクエスト：遷移のリクエストが200であること" do
+  end
+
+  it "listリクエスト：遷移のリクエストが200であること" do
   end
 
 
-  describe "GET #create" do
-    it "returns http success" do
-      get signup_path
-      expect(response).to have_http_status(:success)
-      expect(response).to render_template "users/new"
-    end
-  end
+
+
+
+  #元データ
+  #describe "GET #create" do
+  #  it "returns http success" do
+  #   do end get signup_path
+  #    expect(response).to have_http_status(:success)
+  #    expect(response).to render_template "users/new"
+  #  end
+  #end
 
 end

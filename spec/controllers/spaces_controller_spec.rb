@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe SpacesController, type: :controller do
 
+
+
   describe "GET #new" do
     it "returns http success" do
       get new_path
