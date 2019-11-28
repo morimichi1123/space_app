@@ -43,6 +43,10 @@ RSpec.describe UsersController, type: :request do
       end
     end
 
+    it "createアクション：" do
+      expect(response).to have_http_status :success
+      expect(response).to render_template "users/create"
+    end
 
 
 end

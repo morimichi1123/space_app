@@ -1,8 +1,9 @@
 class Reservation < ApplicationRecord
+  validates :user_id, presence: true
+  validates :space_id, presence: true
   validates :start_date, presence: true, date: true
   validates :end_date, presence: true, date: true
   validate :date_cannot_be_in_the_past
- #validate :start_date_cannot_be_smaller_end_date
   validate :start_end_check
 
  def start_end_check
@@ -20,21 +21,12 @@ def date_cannot_be_in_the_past
   end
 end
 
-#def start_date_cannot_be_smaller_end_date
-#  if start_date.present?
-#    start_date >= end_date
-#    errors.add(:date, ": 過去の日付は使用できません")
-#  end
-#end
-
-
   belongs_to :user
   belongs_to :space
 
   def user
     return User.find_by(id: self.user_id)
   end
-  #これいる？
 
 
   def self.search(search) #ここでのself.はReservations. を意味する

@@ -2,11 +2,14 @@ class ReservationsController < ApplicationController
   before_action :logged_in_user
   include ReservationsHelper
 
-  def new
-    @reservation = Reservation.new
-  end
+  #def new
+  #  debugger
+  #  @reservation = Reservation.new
+  #end
+  #newメソッドいらなかった！
 
   def show
+    debugger
     @reservation = Reservation.find(params[:id])
   end
 
@@ -15,9 +18,9 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    #debugger
     #@reservation = current_user.reservations.create(reservation_params)
     @reservation = Reservation.new(reservation_params)
+    debugger
     @space = Space.find(params[:reservation][:space_id])
     if !correct_reserve_period?(@reservation)
       if @reservation.save

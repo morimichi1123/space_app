@@ -2,9 +2,14 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   #FactoryBotでユーザー情報を@userに登録
-  before do
-    @user = FactoryBot.build(:user)
-  end
+  #before do
+  #  @user = User.new(name:  "hoge",
+  #               email: "hoge@hoge.com",
+  #               password: "hogehoge",
+  #               password_confirmation: "hogehoge",
+  #               admin: false
+  #              )
+  #end
 
   #it { is_expected.to validate_presence_of :name }
   #it { is_expected.to validate_length_of(:name).is_at_most(50) }
@@ -14,23 +19,46 @@ RSpec.describe User, type: :model do
   #it { is_expected.to validate_length_of(:password).is_at_least(6) }
 
   it "invalid user with invalid name" do
-    @user.name = ""
-    expect(@user).not_to be_valid
+    user = User.new(name:  "",
+                     email: "hoge@hoge.com",
+                     password: "hogehoge",
+                     password_confirmation: "hogehoge",
+                     admin: false
+                    )
+    #@user.name = ""
+    expect(user).not_to be_valid
   end
 
   it "invalid user with invalid name" do
-    @user.name = "a" * 49
-    expect(@user).to be_valid
+    #user.name = "a" * 49
+    user = User.new(name:  "a" * 49,
+    email: "hoge@hoge.com",
+    password: "hogehoge",
+    password_confirmation: "hogehoge",
+    admin: false
+   )
+    expect(user).to be_valid
   end
 
   it "invalid user with invalid name" do
-    @user.name = "a" * 50
-    expect(@user).to be_valid
+    user = User.new(name:  "a" * 50,
+    email: "hoge@hoge.com",
+    password: "hogehoge",
+    password_confirmation: "hogehoge")
+    expect(user).to be_valid
   end
 
   it "invalid user with invalid name" do
-    @user.name = "a" * 51
-    expect(@user).not_to be_valid
+    user = User.new(name:  "a" * 51,
+    email: "hoge@hoge.com",
+    password: "hogehoge",
+    password_confirmation: "hogehoge")
+    expect(user).not_to be_valid
+  end
+
+
+  before do
+    @user = FactoryBot.build(:user)
   end
 
   it "invalid user with invalid email" do
@@ -69,7 +97,6 @@ RSpec.describe User, type: :model do
 
     @user.email = "Foo@ExAMPle.CoM"
     @user.save!
-
     #全て小文字のemailと等しいかのテスト
     expect(@user.reload.email).to eq "foo@example.com"
   end

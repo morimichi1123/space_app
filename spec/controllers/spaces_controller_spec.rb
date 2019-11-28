@@ -1,11 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe SpacesController, type: :controller do
+RSpec.describe SpacesController, type: :feature do
 
-
+  before do
+    @user = User.create!(
+                 id: 1,
+                 name:  "mori",
+                 email: "mori@mori.com",
+                 password: "morimori",
+                 password_confirmation: "morimori",
+                 admin: true
+                 )
+  end
 
   describe "GET #new" do
     it "returns http success" do
+      #debugger
       get new_path
       expect(response).to have_http_status(:success)
     end

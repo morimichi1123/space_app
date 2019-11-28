@@ -8,19 +8,32 @@ RSpec.describe ReservationsController, type: :controller do
                  password: "hogehoge",
                  password_confirmation: "hogehoge",
                 )
+
     @space = Space.new(
                        ward_id: 2,
                        price: 5000
                       )
+
+    @reservation = Reservation.new(
+                        id: 1,
+                        user_id: 2,
+                        space_id: 1,
+                        start_date: "2019-11-29 05:16:02",
+                        end_date: "2019-11-30 05:16:02"
+                       )
   end
 
-  it "newアクション：reservation/newへのリクエストが正しく返ってくること" do
+  #it "newアクション：reservation/newへのリクエストが正しく返ってくること" do
+  #  get :new
+  #  expect(response).to be_success
+  #  expect(response).to render_template "reservations/new"
+  #end
 
-    get :new
+  it "showアクション：reserve/showへのリクエストが正しく返ってくること	" do
+    debugger
+    get :show, params: { 'id' => @reservation.id }, session: { 'reservation.id' => @reservation.id}
     expect(response).to be_success
-  end
-
-  it "showアクション：reserve/newへのリクエストが正しく返ってくること	" do
+    expect(response).to render_template "reservations/show"
   end
 
   it "createアクション：Successが表示されること" do
