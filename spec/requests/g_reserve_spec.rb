@@ -31,6 +31,7 @@ RSpec.describe Reservation, type: :feature do
         expect(page).to have_content 'asa'
     end
 
+    #＠reserveを作ってないから？
     #it "物件一覧画面から物件詳細に遷移できること" do
     #    log_in_as(@user)
     #    visit reservations

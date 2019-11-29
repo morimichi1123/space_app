@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe ReservationsController, type: :controller do
 
   before do
-    @user = User.new(name:  "hoge",
-                 email: "hoge@hoge.com",
-                 password: "hogehoge",
-                 password_confirmation: "hogehoge",
-                )
+  #  @user = User.new(name:  "hoge",
+  #               email: "hoge@hoge.com",
+  #               password: "hogehoge",
+  #               password_confirmation: "hogehoge",
+  #              )
 
     @space = Space.new(
                        ward_id: 2,
@@ -30,7 +30,6 @@ RSpec.describe ReservationsController, type: :controller do
   #end
 
   it "showアクション：reserve/showへのリクエストが正しく返ってくること	" do
-    #debugger
     get :show, params: { 'id' => @reservation.id }, session: { 'reservation.id' => @reservation.id}
     expect(response).to be_success
     expect(response).to render_template "reservations/show"
