@@ -1,6 +1,6 @@
 class Reservation < ApplicationRecord
-  validates :user_id, presence: true
-  validates :space_id, presence: true
+  #validates :user_id, presence: true, length:{maximum:50}
+  #validates :space_id, presence: true, length:{maximum:50}
   validates :start_date, presence: true, date: true
   validates :end_date, presence: true, date: true
   validate :date_cannot_be_in_the_past
@@ -21,8 +21,8 @@ def date_cannot_be_in_the_past
   end
 end
 
-  belongs_to :user
-  belongs_to :space
+  belongs_to :user, optional: true
+  belongs_to :space, optional: true
 
   def user
     return User.find_by(id: self.user_id)

@@ -19,6 +19,7 @@ RSpec.feature "page_move", type: :feature do
     end
 
     it 'homeにWelcomeの文字が現れる' do
+      #debugger
       expect(page).to have_content "空いた空間"
     end
 
@@ -56,17 +57,17 @@ RSpec.feature "page_move", type: :feature do
       end
 
       it 'list_pathに遷移する' do
-        debugger
-        expect(current_path).to eq root_path
+        expect(current_path).to eq list_path
       end
 
-      it "成功するとメッセージがでる=>Welcome" do
+      it "成功するとメッセージがでる=>Welcome"[76] do
         expect(page).to have_content "Welcome"
       end
     end
 
     feature 'new createに失敗した時の挙動テスト' do
       before do
+        visit root_path
         fill_in 'Name',         with: 'hoge'
         fill_in 'Email',        with: 'test@hoge.com'
         fill_in 'Password',     with: 'hogehoge'
@@ -88,10 +89,10 @@ RSpec.feature "page_move", type: :feature do
   feature "ログイン失敗" do
     before do
       visit root_path
-      @user = FactoryBot.create(:user)
-      fill_in 'Email',        with: 'tester1@example.com'
-      fill_in 'Password',     with: 'passwordd'
-      click_button 'Log in'
+      #@user = FactoryBot.create(:user)
+      fill_in 'Email',        with: 'tester1@example.com', match: :first
+      fill_in 'Password',     with: 'passwordd', match: :first
+      click_on 'Log in'
     end
     it "error message" do
       expect(page).to have_content "Invalid email/password combination"

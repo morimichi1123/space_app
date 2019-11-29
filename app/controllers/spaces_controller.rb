@@ -33,7 +33,6 @@ class SpacesController < ApplicationController
 
   def create
     @space = Space.new(space_params)
-    debugger
     if @space.save
         flash[:success] = "Success!! Add New Space"
         redirect_to list_path

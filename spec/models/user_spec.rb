@@ -40,7 +40,7 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
-  it "invalid user with invalid name" do
+  it "invalid user with valid name" do
     user = User.new(name:  "a" * 50,
     email: "hoge@hoge.com",
     password: "hogehoge",

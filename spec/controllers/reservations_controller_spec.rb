@@ -30,7 +30,7 @@ RSpec.describe ReservationsController, type: :controller do
   #end
 
   it "showアクション：reserve/showへのリクエストが正しく返ってくること	" do
-    debugger
+    #debugger
     get :show, params: { 'id' => @reservation.id }, session: { 'reservation.id' => @reservation.id}
     expect(response).to be_success
     expect(response).to render_template "reservations/show"

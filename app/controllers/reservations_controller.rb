@@ -9,7 +9,7 @@ class ReservationsController < ApplicationController
   #newメソッドいらなかった！
 
   def show
-    debugger
+    #debugger
     @reservation = Reservation.find(params[:id])
   end
 
@@ -20,7 +20,7 @@ class ReservationsController < ApplicationController
   def create
     #@reservation = current_user.reservations.create(reservation_params)
     @reservation = Reservation.new(reservation_params)
-    debugger
+    #debugger
     @space = Space.find(params[:reservation][:space_id])
     if !correct_reserve_period?(@reservation)
       if @reservation.save

@@ -43,10 +43,12 @@ RSpec.describe UsersController, type: :request do
       end
     end
 
-    it "createアクション：" do
-      expect(response).to have_http_status :success
-      expect(response).to render_template "users/create"
-    end
+    #it 'createアクション：200かつ遷移' do
+    #  get root_path
+    #  expect(response).to have_http_status :success
+    #  expect(response).to have_http_status 200
+    #  expect(response).to render_template "users/create"
+    #end
 
 
 end
