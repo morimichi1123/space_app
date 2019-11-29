@@ -5,6 +5,10 @@ module TestHelper
                                             } }
     end
 
+    def is_logged_in?
+        !session[:user_id].nil?
+    end
+
     def admin_login
         #user = FactoryBot.create(:admin)
 
@@ -29,5 +33,5 @@ module TestHelper
     def correct_user
         @user = User.find(params[:id])
         redirect_to(root_url) unless @user == current_user
-      end
+    end
 end

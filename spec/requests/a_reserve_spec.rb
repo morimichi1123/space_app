@@ -105,7 +105,7 @@ RSpec.feature "admin_login", type: :feature do
               click_button "Log in"
             end
 
-            it 'ログイン成功した場合' do
+             it 'ログイン成功した場合' do
                 expect(current_path).to eq root_path
 
                 expect(page).to have_content "contents"
@@ -116,7 +116,7 @@ RSpec.feature "admin_login", type: :feature do
 
    #it '物件一覧画面から検索できること[88]' do
 #  #     log_in(@user)
-#  #     @user= current_user
+#  #     @user= current_use
    #    admin_login
    #    visit menu_path
    #        @space = Space.create!(

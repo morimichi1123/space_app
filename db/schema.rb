@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20191122105943) do
     t.string "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "exist", limit: 1, default: 0
     t.string "picture"
   end
 
@@ -42,11 +41,6 @@ ActiveRecord::Schema.define(version: 20191122105943) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.boolean "admin"
-  end
-
-  create_table "wards", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "ward_id", null: false
-    t.string "ward_name", limit: 50, null: false
   end
 
   add_foreign_key "reservations", "spaces"
