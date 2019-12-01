@@ -11,6 +11,11 @@ RSpec.describe SpacesController, type: :request do
                  password_confirmation: "morimori",
                  admin: true
                  )
+    #@space = FactoryBot.create(:space)
+    @space = Space.create!(id:1,
+                           space_name: "ginza",
+                           ward_id: 1,
+                           price: 5000)
   end
 
   #describe "GET #new" do
@@ -20,25 +25,34 @@ RSpec.describe SpacesController, type: :request do
   #  end
   #end
 
-  describe "GET #edit" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  #要改善↓
-  it 'editアクション：302かつ遷移[5]' do
+  #イケてる？↓
+  it 'showアクション：space/showへのリクエストが正しく返り遷移すること[13][86]' do
     post login_path, params: { user: {name:  "mori",
                  email: "mori@mori.com",
                  password: "morimori",
                  password_confirmation: "morimori"} }
-    get spaces/2/edit_path
-    expect(response).to render_template "spaces/edit"
+    get "/spaces/#{@space.id}"
+    expect(response).to render_template "spaces/show"
+  end
+
+  #要改善？↓
+  describe "GET #edit" do
+    it "returns http success" do
+          post login_path, params: { user: {name:  "mori",
+                 email: "mori@mori.com",
+                 password: "morimori",
+                 password_confirmation: "morimori"} }
+      get edit_path, params{ id: @space.id }
+      expect(response).to have_http_status(:success)
+    end
   end
 
   describe "GET #update" do
     it "returns http success" do
+          post login_path, params: { user: {name:  "mori",
+                 email: "mori@mori.com",
+                 password: "morimori",
+                 password_confirmation: "morimori"} }
       get :update
       expect(response).to have_http_status(:success)
     end
