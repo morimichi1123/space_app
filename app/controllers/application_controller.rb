@@ -19,9 +19,9 @@ class ApplicationController < ActionController::Base
     redirect_to(root_url) unless @user == current_user
   end
 
-  def correct_space
-    @space = Space.find(params[:id])
-    redirect_to list_path unless @space == current_space
-  end
+  #def correct_space
+  #  @space = Space.find(params[:id])
+  #  redirect_to list_path unless @space == current_space
+  #end
 
 end

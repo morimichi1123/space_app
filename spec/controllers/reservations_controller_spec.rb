@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ReservationsController, type: :controller do
+RSpec.describe ReservationsController, type: :request do
 
   before do
   #  @user = User.new(name:  "hoge",
@@ -9,28 +9,41 @@ RSpec.describe ReservationsController, type: :controller do
   #               password_confirmation: "hogehoge",
   #              )
 
-    @space = Space.new(
+    @space = Space.new(space_name: "ginza",
                        ward_id: 2,
                        price: 5000
                       )
 
     @reservation = Reservation.new(
-                        id: 1,
                         user_id: 2,
                         space_id: 1,
-                        start_date: "2019-11-29 05:16:02",
-                        end_date: "2019-11-30 05:16:02"
+                        start_date: "2019-12-20 05:16:02",
+                        end_date: "2019-12-30 05:16:02"
                        )
   end
 
-  #it "newアクション：reservation/newへのリクエストが正しく返ってくること" do
-  #  get :new
-  #  expect(response).to be_success
-  #  expect(response).to render_template "reservations/new"
-  #end
+  it "newアクション：reservation/newへのリクエストが正しく返ってくること" do
+    post login_path, params:  { user: {name:  "mori",
+                   email: "mori@mori.com",
+                   password: "morimori",
+                   password_confirmation: "morimori"} }
+    get new_path
+    expect(response).to be_success
+    expect(response).to render_template "reservations/new"
+  end
 
   it "showアクション：reserve/showへのリクエストが正しく返ってくること	" do
-    get :show, params: { 'id' => @reservation.id }, session: { 'reservation.id' => @reservation.id}
+    post login_path, params: { user: {name:  "mori",
+                   email: "mori@mori.com",
+                   password: "morimori",
+                   password_confirmation: "morimori"} }
+    @reservation = Reservation.new(
+                    user_id: 2,
+                    space_id: 1,
+                    start_date: "2019-12-20 05:16:02",
+                    end_date: "2019-12-30 05:16:02")
+    #get :show, params: { 'id' => @reservation.id }, session: { 'reservation.id' => @reservation.id}
+    get "/reservations/#{@reserve.id}"
     expect(response).to be_success
     expect(response).to render_template "reservations/show"
   end

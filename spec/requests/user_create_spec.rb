@@ -62,7 +62,7 @@ end
 
 RSpec.describe "UsersLogin", type: :request do
 
-  it "sessions/newにアクセスできること" do
+  it "sessions/newにアクセスできること[19]" do
     #ログインページにアクセス
     get root_path
     expect(response).to have_http_status(:success)

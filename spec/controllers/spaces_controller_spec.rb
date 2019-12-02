@@ -35,32 +35,40 @@ RSpec.describe SpacesController, type: :request do
     expect(response).to render_template "spaces/show"
   end
 
-  #要改善？↓
   describe "GET #edit" do
-    it "returns http success" do
+    it "returns http success[16]" do
           post login_path, params: { user: {name:  "mori",
                  email: "mori@mori.com",
                  password: "morimori",
                  password_confirmation: "morimori"} }
-      get edit_path, params{ id: @space.id }
+      get edit_space_path(@space)
       expect(response).to have_http_status(:success)
     end
   end
 
+  #↓要改善
   describe "GET #update" do
-    it "returns http success" do
+    it "returns http success[17]" do
           post login_path, params: { user: {name:  "mori",
                  email: "mori@mori.com",
                  password: "morimori",
                  password_confirmation: "morimori"} }
-      get :update
-      expect(response).to have_http_status(:success)
+    space = FactoryBot.create(:space)
+    patch :update, id: space, space: attributes_for(:space)
+    expect(response).to have_http_status(:success)
+    #expect(response).to redirect_to spaces_path
     end
   end
 
-  describe "GET #cerate" do
-    it "returns http success" do
-      get :cerate
+    #↓要改善
+  describe "GET #create" do
+    it "returns http success[14]" do
+                post login_path, params: { user: {name:  "mori",
+                 email: "mori@mori.com",
+                 password: "morimori",
+                 password_confirmation: "morimori"} }
+
+      get create_space_path(@space)
       expect(response).to have_http_status(:success)
     end
   end

@@ -8,7 +8,7 @@ class Reservation < ApplicationRecord
 
  def start_end_check
    if self.start_date.present? && self.end_date.present?
-    errors.add(:end_date, "の日付を正しく記入してください。") unless
+  #  errors.add(:end_date, "の日付を正しく記入してください。") unless
     self.start_date < self.end_date
    else
     return false
@@ -24,9 +24,9 @@ end
   belongs_to :user, optional: true
   belongs_to :space, optional: true
 
-  def user
-    return User.find_by(id: self.user_id)
-  end
+  #def user
+  #  return User.find_by(id: self.user_id)
+  #end
 
 
   def self.search(search) #ここでのself.はReservations. を意味する

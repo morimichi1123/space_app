@@ -15,12 +15,13 @@ RSpec.describe Reservation, type: :feature do
         visit list_path
     end
 
-    it "物件一覧画面から物件詳細に遷移できること" do
+    it "物件一覧画面から物件詳細に遷移できること[101],[103]" do
         visit space_path(@space.id)
         expect(page).to have_content '年をまたいだ予約'
+        expect(page).not_to have_content 'edit'
     end
 
-    it "物件一覧画面から検索できること" do
+    it "物件一覧画面から検索できること[102]" do
         @space = Space.create!(
                                 space_name: "asakusa",
                                 ward_id:  11,
@@ -31,11 +32,19 @@ RSpec.describe Reservation, type: :feature do
         expect(page).to have_content 'asa'
     end
 
-    #＠reserveを作ってないから？
-    #it "物件一覧画面から物件詳細に遷移できること" do
-    #    log_in_as(@user)
+    #g_loginにてDONE
+    #it "予約一覧画面から予約詳細に遷移できること[108]" do
+    #    #@reservation = Reservation.create!(
+    #    #                                    user_id: 3,
+    #    #                                    space_id:  1,
+    #    #                                    start_date: "2019-12-20 05:16:02",
+    #    #                                    end_date: "2019-12-30 05:16:02"
+    #    #                                  )
+    #    @reservation = FactoryBot.build(:reservation)
+    #    #外部キーなので作れませんらしい
+    #    @reservation.save
     #    visit reservations
-    #    get :show, params: { 'id' => @reservation.id }, session: { 'reservation.id' => @reservation.id}
+    #    get :show, params: { 'id' => @reservation.id }
     #    expect(page).to have_content "Detail"
     #end
 

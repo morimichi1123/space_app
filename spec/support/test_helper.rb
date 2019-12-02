@@ -25,6 +25,10 @@ module TestHelper
         end
     end
 
+    def current_user?(user)
+        current_user == user
+    end
+
     def log_in(user)
         session[:user_id] = user.id
         session[:name] = user.name

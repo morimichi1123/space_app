@@ -34,12 +34,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    #if
+       @user.update_attributes(user_params)
       flash[:success] = "Your Information Updated"
       redirect_to list_path
-    else
-      render 'edit'
-    end
+    #else
+    #  render 'edit　→ログインユーザーでrootにはじけるので不要(=> g_Mypage_spec.rb)
+    #end
   end
 
   def list
