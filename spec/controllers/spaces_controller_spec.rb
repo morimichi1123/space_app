@@ -46,7 +46,7 @@ RSpec.describe SpacesController, type: :request do
     end
   end
 
-  #↓要改善
+  #↓要改善→featureで書けるはず
   describe "GET #update" do
     it "returns http success[17]" do
           post login_path, params: { user: {name:  "mori",
@@ -60,7 +60,7 @@ RSpec.describe SpacesController, type: :request do
     end
   end
 
-    #↓要改善
+    #↓要改善→featureで書けるはず
   describe "GET #create" do
     it "returns http success[14]" do
                 post login_path, params: { user: {name:  "mori",
@@ -81,6 +81,7 @@ RSpec.describe SpacesController, type: :request do
   #  end
   #end
 
+  #↓要改善→featureで書けるはず
   describe "GET #destroy" do
     it "returns http success" do
       get :destroy
