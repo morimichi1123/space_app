@@ -93,6 +93,20 @@ RSpec.feature "general_login", type: :request do
         expect(response.body).to include "Detail"
       end
 
+      #要改善↓検索！！！
+      it 'generalログインで予約一覧から予約検索に遷移できること[100]' do
+        post signup_path, params: { user: {name: "kai",
+                                          email: "kaikai@kai.com",
+                                          password: "kaikai",
+                                          password_confirmation: "kaikai"}}
+        expect(response.status).to eq 302
+        follow_redirect!
+        @reservation = FactoryBot.create(:reservation, user_id: @user.id, space_id: @space.id)
+        @reservation = Reservation.last
+        get index_path, params: {id: @reservation.id}
+        expect(response).to render_template "reservations/list"
+        end
+
       it 'generalログインで情報変更に遷移できること[105]' do
         post signup_path, params: { user: {name: "kai",
                                           email: "kai@kai.com",
@@ -107,7 +121,6 @@ RSpec.feature "general_login", type: :request do
         #expect(response).to render_template "users/edit"
       end
 
-      #要改善↓
       it "現在のuserがcurrent_userであること[115]" do
                 post signup_path, params: { user: {name: "kai",
                                           email: "kai@kai.com",
@@ -118,4 +131,9 @@ RSpec.feature "general_login", type: :request do
         expect(user).to eq current_user
         expect(current_user == user).to be_truthy
       end
+
+        #検索の部品
+        #expect(response.body).to include "user_id"
+        #assert_select "tr", "#{@reservation.id}"
+        #expect(response.body).to include "#{@reservation.id}"
 end

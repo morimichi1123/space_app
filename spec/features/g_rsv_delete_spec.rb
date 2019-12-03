@@ -31,13 +31,13 @@ RSpec.feature "page_move", type: :feature do
         #↓要改善。予約検索。！！！！
         it "予約listから検索できること[]" do
             expect(page).to have_content "Search"
-              @reservation = Reservation.create!(id: 4, start_date: "2019/12/22", end_date: "2019/12/24", user_id: @user.id, space_id: @space.id)
+              @reservation = Reservation.create!(start_date: "2019/12/22", end_date: "2019/12/24", user_id: @user.id, space_id: @space.id)
               @reservation = Reservation.last
-              @reservation.reload
+              #@reservation.reload
               #@reservation = FactoryBot.create(:reservation(id: 4), user_id: @user.id, space_id: @space.id)
-                fill_in "search",   with: 4
+                fill_in "search",   with: @reservation.id
                 click_on 'Search'
-            expect(page).to have_content 4
+                assert_select "td", "#{@reservation.id}"
         end
       end
 

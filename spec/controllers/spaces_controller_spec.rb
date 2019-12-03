@@ -46,32 +46,32 @@ RSpec.describe SpacesController, type: :request do
     end
   end
 
-  #↓要改善→featureで書けるはず
-  describe "GET #update" do
-    it "returns http success[17]" do
-          post login_path, params: { user: {name:  "mori",
-                 email: "mori@mori.com",
-                 password: "morimori",
-                 password_confirmation: "morimori"} }
-    space = FactoryBot.create(:space)
-    patch :update, id: space, space: attributes_for(:space)
-    expect(response).to have_http_status(:success)
-    #expect(response).to redirect_to spaces_path
-    end
-  end
+  #↓要改善→featureで書けた
+  #describe "GET #update" do
+  #  it "returns http success[17]" do
+  #        post login_path, params: { user: {name:  "mori",
+  #               email: "mori@mori.com",
+  #               password: "morimori",
+  #               password_confirmation: "morimori"} }
+  #  space = FactoryBot.create(:space)
+  #  patch :update, id: space, space: attributes_for(:space)
+  #  expect(response).to have_http_status(:success)
+  #  #expect(response).to redirect_to spaces_path
+  #  end
+  #end
 
-    #↓要改善→featureで書けるはず
-  describe "GET #create" do
-    it "returns http success[14]" do
-                post login_path, params: { user: {name:  "mori",
-                 email: "mori@mori.com",
-                 password: "morimori",
-                 password_confirmation: "morimori"} }
-
-      get create_space_path(@space)
-      expect(response).to have_http_status(:success)
-    end
-  end
+    #↓要改善→featureで書けた
+  #describe "GET #create" do
+  #  it "returns http success[14]" do
+  #              post login_path, params: { user: {name:  "mori",
+  #               email: "mori@mori.com",
+  #               password: "morimori",
+  #               password_confirmation: "morimori"} }
+#
+  #    get create_space_path(@space)
+  #    expect(response).to have_http_status(:success)
+  #  end
+  #end
 
   #admin_login_spec.rbに書いてる
   #describe "GET #list" do
@@ -81,12 +81,12 @@ RSpec.describe SpacesController, type: :request do
   #  end
   #end
 
-  #↓要改善→featureで書けるはず
-  describe "GET #destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
-    end
-  end
+  #↓要改善→featureで書けた
+  #describe "GET #destroy" do
+  #  it "returns http success" do
+  #    get :destroy
+  #    expect(response).to have_http_status(:success)
+  #  end
+  #end
 
 end

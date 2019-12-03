@@ -27,7 +27,6 @@ class ReservationsController < ApplicationController
           flash[:success] = "予約が完了しました"
           redirect_to list_path
       else
-          #同じshowページのままエラーはく↓要改善
           flash[:danger] = "予約未完了です。正しいstart/end日付を入力してください。"
           redirect_to list_path
       end
