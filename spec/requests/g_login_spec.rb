@@ -108,7 +108,7 @@ RSpec.feature "general_login", type: :request do
       end
 
       #要改善↓
-      it "現在のuserがcurrent_userであること[113]" do
+      it "現在のuserがcurrent_userであること[115]" do
                 post signup_path, params: { user: {name: "kai",
                                           email: "kai@kai.com",
                                           password: "kaikai",
