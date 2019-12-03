@@ -51,5 +51,15 @@ RSpec.describe "space_create", type: :request do
         follow_redirect!
         expect(response).to render_template "spaces/list"
         expect(response.body).to include "Updated"
+    end
+
+    it "adminユーザーが物件編集失敗するとeditに遷移されること[117]" do
+        post login_path, params: { user: {
+                                   email: "mori@mori.com",
+                                   password: "morimori"}}
+        ward_id = ""
+        patch space_path(@space), params: {space: {ward_id: ward_id }}
+        @space.reload
+        expect(response).to render_template "spaces/edit"
       end
 end

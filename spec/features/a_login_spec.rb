@@ -16,12 +16,13 @@ feature ' Admin User' do
           click_button "Log in"
           visit root_path
         end
+
         it 'root_pathに遷移できること' do
             expect(current_path).to eq root_path
         #visit root_path
         end
 
-        it 'userlistからに検索できること' do
+        it 'userlistからにユーザーを検索できること' do
             visit userlist_path
             #expect(current_path).to eq root_path
             expect(page).to have_content "Search"

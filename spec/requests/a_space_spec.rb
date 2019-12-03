@@ -6,9 +6,10 @@ RSpec.describe Reservation, type: :request do
         @space = FactoryBot.create(:space)
         @space1 = FactoryBot.create(:space)
         @user = FactoryBot.create(:admin)
-      end
+        @reservation = FactoryBot.create(:reservation, user_id: @user.id, space_id: @space.id)
+    end
 
-    it '物件詳細から物件を削除できること[91]' do
+    it '物件詳細から物件を削除できること[91][99]' do
         post login_path, params: { user: {
                                    email: "mori@mori.com",
                                    password: "morimori"}}
@@ -16,9 +17,11 @@ RSpec.describe Reservation, type: :request do
         get "/spaces/#{@space.id}"
         expect(response).to render_template "spaces/show"
             count = Space.count
+            count1 = Reservation.count
             delete space_path(@space)
             #space消したふり
             expect(count).to eq Space.count
+            expect(count1).to eq Reservation.count
             #expect(@space.exist).to eq 1
             follow_redirect!
             expect(response.body).to include "deleted"
@@ -58,20 +61,21 @@ RSpec.describe Reservation, type: :request do
         expect(response).to render_template "spaces/new"
       end
 
-      it '物件追加画面から追加したらSuccessが表示されること[113]' do
-        post login_path, params: { user: {
-                                          email: "mori@mori.com",
-                                          password: "morimori"
-                                          }
-                                  }
-        expect(response.status).to eq 302
-        follow_redirect!
-        get new_path
-        count = Space.count
-        space2 = FactoryBot.create(:space)
-        create space_path(space2)
-        expect(count).not_to eq Space.count
-        expect(response).to render_template "spaces/list"
-        expect(response.body).to include "Success"
-      end
+      #a_space_createに書いてる
+      #it '物件追加画面から追加したらSuccessが表示されること[113]' do
+      #  post login_path, params: { user: {
+      #                                    email: "mori@mori.com",
+      #                                    password: "morimori"
+      #                                    }
+      #                            }
+      #  expect(response.status).to eq 302
+      #  follow_redirect!
+      #  get new_path
+      #  count = Space.count
+      #  space2 = FactoryBot.create(:space)
+      #  create space_path(space2)
+      #  expect(count).not_to eq Space.count
+      #  expect(response).to render_template "spaces/list"
+      #  expect(response.body).to include "Success"
+      #end
 end

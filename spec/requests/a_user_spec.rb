@@ -38,16 +38,13 @@ RSpec.describe Reservation, type: :request do
         expect(response).to render_template "users/list"
     end
 
-    #要改善検索のものに
-    it 'ユーザ一覧からユーザを検索できること[]' do
+    it 'ユーザ一覧からユーザを検索できること[95]' do
         post login_path, params: { user: {
                                    email: "mori@mori.com",
                                    password: "morimori"}}
 
-        get userlist_path
+        get userlist_path, params: {name: "aori"}
         expect(response).to render_template "users/list"
-
+        expect(response.body).to include "aori"
     end
-
-
 end
