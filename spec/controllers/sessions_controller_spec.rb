@@ -25,7 +25,7 @@ RSpec.describe SessionsController, type: :request do
       expect(response.status).to eq 302
       follow_redirect!
       expect(response).to render_template "spaces/list"
-      session[:user_id]
+      #session[:user_id]
       expect(is_logged_in?).to be_truthy
     end
   end

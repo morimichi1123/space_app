@@ -7,6 +7,7 @@ RSpec.feature "general_login", type: :request do
         @space = FactoryBot.create(:space)
       end
 
+    describe "adminとgeneral" do
       it 'generalログインでSearchが表示されること[69]' do
         post signup_path, params: { user: {name: "kai",
                                           email: "kaikai@kai.com",
@@ -14,19 +15,36 @@ RSpec.feature "general_login", type: :request do
                                           password_confirmation: "kaikai"}}
         expect(response.status).to eq 302
         follow_redirect!
+        redirect_to list_path
         expect(response).to render_template "spaces/list"
         expect(response.body).to include "Search"
       end
 
-      it 'generalログインでMypageに遷移できること[103]' do
-        post signup_path, params: { user: {name: "kai",
-                                          email: "kaikai@kai.com",
-                                          password: "kaikai",
-                                          password_confirmation: "kaikai"}}
+      it 'adminログインでContentsが表示されること[68]' do
+          @user = FactoryBot.create(:admin)
+        post login_path, params: { user: {
+                                          email: "mori@mori.com",
+                                          password: "morimori"
+                                          }
+                                  }
         expect(response.status).to eq 302
         follow_redirect!
-        get root_path
         expect(response).to render_template "/"
+        expect(response.body).to include "Contents"
+    end
+  end
+
+      it 'generalログインできないとrootにリダイレクトされること[10]' do
+        post signup_path, params: { user: {name: "kai",
+                                         email: "kaikai@kai.com",
+                                         password: "kikai",
+                                         password_confirmation: "kaikai"}}
+        get index_path
+        expect(response.status).to eq 302
+        follow_redirect!
+        expect(is_logged_in?).to be_falsey
+        expect(response.body).to include "Please"
+        redirect_to root_url
       end
 
       it 'generalログインで予約一覧に遷移できること[104],[106]' do
@@ -39,6 +57,18 @@ RSpec.feature "general_login", type: :request do
         get index_path
         expect(response).to render_template "reservations/list"
         expect(response.body).to include "ID Search"
+      end
+
+      it 'generalログインでMypageに遷移できること[104]' do
+        post signup_path, params: { user: {name: "kai",
+                                          email: "kaikai@kai.com",
+                                          password: "kaikai",
+                                          password_confirmation: "kaikai"}}
+        expect(response.status).to eq 302
+        follow_redirect!
+        get root_path
+        expect(response).to render_template "/"
+        expect(response.body).to include "Contents"
       end
 
       it 'generalログインで予約一覧から詳細に遷移できること[107]' do
@@ -75,6 +105,17 @@ RSpec.feature "general_login", type: :request do
         follow_redirect!
         expect(response).to have_http_status :success
         #expect(response).to render_template "users/edit"
-        #要改善?↑templateはいらん？
+      end
+
+      #要改善↓
+      it "現在のuserがcurrent_userであること[113]" do
+                post signup_path, params: { user: {name: "kai",
+                                          email: "kai@kai.com",
+                                          password: "kaikai",
+                                          password_confirmation: "kaikai"}}
+        user = User.last
+        #@user.update_attribute(true)
+        expect(user).to eq current_user
+        expect(current_user == user).to be_truthy
       end
 end

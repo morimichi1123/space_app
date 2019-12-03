@@ -32,19 +32,6 @@ RSpec.feature "admin_login", type: :request do
         expect(response).to render_template "spaces/menu"
       end
 
-      #it 'ログインしたら物件操作画面に遷移できること[83]' do
-      #  post login_path, params: { user: {
-      #                                    email: "mori@mori.com",
-      #                                    password: "morimori"
-      #                                    }
-      #                            }
-      #  expect(response.status).to eq 302
-      #  follow_redirect!
-      #  expect(response).to render_template "/"
-      #  get menu_path
-      #  expect(response).to render_template "spaces/menu"
-      #end
-
       it '物件一覧画面から検索できること[87]' do
         post login_path, params: { user: {
                                           email: "mori@mori.com",

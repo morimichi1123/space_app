@@ -45,27 +45,27 @@ RSpec.describe Reservation, type: :feature do
         fill_in '借りたい日',   with: '2020/1/1'
         fill_in '返す日',     with: '2020/1/3'
         click_button 'この日程で予約する'
-        expect(page).to have_content '完了'
+        expect(page).to have_content '完了しました'
     end
 
     it "予約期間が重複していなければ「予約完了」が表示されること" do
         fill_in '借りたい日',   with: '2020/1/1'
         fill_in '返す日',     with: '2020/1/3'
         click_button 'この日程で予約する'
-        expect(page).to have_content '完了'
+        expect(page).to have_content '完了しました'
 
         visit space_path(@space.id)
         fill_in '借りたい日',   with: '2020/1/4'
         fill_in '返す日',     with: '2020/1/5'
         click_button 'この日程で予約する'
-        expect(page).to have_content '完了'
+        expect(page).to have_content '完了しました'
     end
 
     it "予約開始日が重複していると「予約未完了」が表示されること" do
         fill_in '借りたい日',   with: '2020/1/1'
         fill_in '返す日',     with: '2020/1/3'
         click_button 'この日程で予約する'
-        expect(page).to have_content '完了'
+        expect(page).to have_content '完了しました'
 
         visit space_path(@space.id)
         fill_in '借りたい日',   with: '2020/1/3'
@@ -78,7 +78,7 @@ RSpec.describe Reservation, type: :feature do
         fill_in '借りたい日',   with: '2020/1/5'
         fill_in '返す日',     with: '2020/1/6'
         click_button 'この日程で予約する'
-        expect(page).to have_content '完了'
+        expect(page).to have_content '完了しました'
 
         visit space_path(@space.id)
         fill_in '借りたい日',   with: '2019/12/30'
@@ -91,7 +91,7 @@ RSpec.describe Reservation, type: :feature do
         fill_in '借りたい日',   with: '2020/1/1'
         fill_in '返す日',     with: '2020/1/6'
         click_button 'この日程で予約する'
-        expect(page).to have_content '完了'
+        expect(page).to have_content '完了しました'
 
         visit space_path(@space.id)
         fill_in '借りたい日',   with: '2020/1/2'

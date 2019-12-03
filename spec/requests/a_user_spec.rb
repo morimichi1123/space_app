@@ -36,5 +36,18 @@ RSpec.describe Reservation, type: :request do
             expect(count).not_to eq User.count
         follow_redirect!
         expect(response).to render_template "users/list"
-      end
+    end
+
+    #要改善検索のものに
+    it 'ユーザ一覧からユーザを検索できること[]' do
+        post login_path, params: { user: {
+                                   email: "mori@mori.com",
+                                   password: "morimori"}}
+
+        get userlist_path
+        expect(response).to render_template "users/list"
+
+    end
+
+
 end

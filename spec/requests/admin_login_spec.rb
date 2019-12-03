@@ -124,6 +124,7 @@ RSpec.feature "admin_login", type: :request do
         expect(response).to render_template "spaces/new"
       end
 
+      # なんで？↓
       it 'adminログインで物件詳細に遷移できること[86][13]' do
         post login_path, params: { user: {
                                           email: "mori@mori.com",
@@ -132,12 +133,13 @@ RSpec.feature "admin_login", type: :request do
                                   }
         expect(response.status).to eq 302
         follow_redirect!
-        @space =  {id: 1,
+        @space =  {id: 5,
                    space_name: "ginza",
                    ward_id: 1,
                    price: 5000}
         #get space_path(@space, id: 10)
-        get show_path, params: { id: 1 }
+        #get show_path, params: { id: 5 }
+        get "/spaces/#{@space.id}"
         expect(response).to render_template "spaces/show"
       end
 
