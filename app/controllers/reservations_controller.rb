@@ -24,15 +24,15 @@ class ReservationsController < ApplicationController
     @space = Space.find(params[:reservation][:space_id])
     if !correct_reserve_period?(@reservation)
       if @reservation.save
-          flash[:success] = "予約が完了しました"
+          flash[:success] = "予約が完了しました。Mypageから履歴を確認・キャンセルできます。"
           redirect_to list_path
       else
           flash[:danger] = "予約未完了です。正しいstart/end日付を入力してください。"
-          redirect_to list_path
+          redirect_to @space
       end
     else
-      flash[:danger] = "予約未完了です。日付にエラーがあります。"
-      redirect_to list_path
+      flash[:danger] = "予約未完了です。日付に重複などのエラーがあります。"
+      redirect_to @space
     end
   end
 
